@@ -6,7 +6,7 @@
 body{
     height: 100vh;
     background-color: #ff8b85;
-    background-image: url(img/Large-Triangles.svg);
+    background-image: url(/img/Large-Triangles.svg);
 }
 .instr{
     text-align: center;
@@ -45,6 +45,7 @@ body{
 .box{
     width: 200px;
     height: 200px;
+    transition: .5s ease-in-out;
     margin: auto;
     border-radius: 2px;
     background-color: #efefef;
@@ -65,5 +66,29 @@ body{
             background-color: #efefef;
             margin: 3px;
         }
+    }
+}
+
+
+.controls{
+    width: fit-content;
+    background-color:#60eaf4;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    clip-path: circle( 7% at 6.5% 14%);
+    overflow: hidden;
+    transition: .5s ease-in-out;
+    .i{
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: .5s ease-in-out;
+        transition: font-size .2s ease-in-out;
+       &:hover{
+         font-size: 1.3em;
+        }
+    }
+    .desc{
+        padding:10px;
     }
 }

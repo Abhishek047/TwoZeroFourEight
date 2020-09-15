@@ -8,9 +8,11 @@ const domRows = document.querySelectorAll(".row");
 const score = document.getElementById('score');
 const box = document.querySelector('.box');
 const message = document.querySelector('.instr');
+const control = document.querySelector(".i");
 box.addEventListener('click' , mouseClick);
 document.addEventListener('keydown' , keyPress );
-
+control.addEventListener('click' , controlDesc);
+let controlDescOpen = false;
 
 
 //Genrate random element function
@@ -35,6 +37,7 @@ let genrate = function()
     else{
         alert("GameOver Your Score-->"+ total);
         loggedIn = 0;        //it will make not to listen to any key listening
+        start=0;
         reset();
         message.style.visibility="visible";
         // start=0;
@@ -140,10 +143,30 @@ function keyPress(e){
 }
 
 function mouseClick(e){
-    start=0;
     message.style.visibility="hidden";
     startPlay();
 }
+
+
+function controlDesc()
+{
+    if(controlDescOpen === false)
+    {
+        controlDescOpen = true ;
+        console.log(1);
+        control.parentElement.style.clipPath = "circle( 130% at 7% 15%)";
+        control.innerHTML = "Back"
+    }
+    else{
+        controlDescOpen = false ;
+        console.log(0);
+        control.parentElement.style.clipPath = "circle( 7% at 6.5% 14%)";
+        control.innerHTML = "i"
+    }
+}
+
+
+//Game Functions
 
 
 let shiftUp = function(){

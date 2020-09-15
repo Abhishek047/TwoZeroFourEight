@@ -7,7 +7,7 @@
 body {
   height: 100vh;
   background-color: #ff8b85;
-  background-image: url(img/Large-Triangles.svg);
+  background-image: url(/img/Large-Triangles.svg);
 }
 
 .instr {
@@ -63,6 +63,8 @@ body {
 .box {
   width: 200px;
   height: 200px;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
   margin: auto;
   border-radius: 2px;
   background-color: #efefef;
@@ -90,5 +92,37 @@ body {
   padding-top: 5px;
   background-color: #efefef;
   margin: 3px;
+}
+
+.controls {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #60eaf4;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 5px;
+  -webkit-clip-path: circle(7% at 6.5% 14%);
+          clip-path: circle(7% at 6.5% 14%);
+  overflow: hidden;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+.controls .i {
+  font-size: 1.2em;
+  cursor: pointer;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  -webkit-transition: font-size .2s ease-in-out;
+  transition: font-size .2s ease-in-out;
+}
+
+.controls .i:hover {
+  font-size: 1.3em;
+}
+
+.controls .desc {
+  padding: 10px;
 }
 /*# sourceMappingURL=style.css.map */
