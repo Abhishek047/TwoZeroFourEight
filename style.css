@@ -61,8 +61,8 @@ body {
 }
 
 .box {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 240px;
   -webkit-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   margin: auto;
@@ -77,7 +77,7 @@ body {
 }
 
 .box .row {
-  height: 50px;
+  height: 60px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
@@ -89,27 +89,41 @@ body {
   font-size: 2em;
   font-weight: 500;
   border-radius: 5px;
-  padding-top: 5px;
+  padding-top: 10px;
   background-color: #efefef;
   margin: 3px;
 }
 
 .controls {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 340px;
   background-color: #60eaf4;
   margin: 20px auto;
   padding: 20px;
   border-radius: 5px;
-  -webkit-clip-path: circle(7% at 6.5% 14%);
-          clip-path: circle(7% at 6.5% 14%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-clip-path: circle(9% at 8.5% 45%);
+          clip-path: circle(9% at 8.5% 45%);
   overflow: hidden;
-  -webkit-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.controls .i-contain {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
 }
 
 .controls .i {
+  padding: 10px;
   font-size: 1.2em;
   cursor: pointer;
   -webkit-transition: .5s ease-in-out;
@@ -122,7 +136,73 @@ body {
   font-size: 1.3em;
 }
 
+.controls .control-instr {
+  display: none;
+}
+
 .controls .desc {
   padding: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.mobile-control {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  margin: 20px auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+}
+
+.mobile-control img {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+.mobile-control .key {
+  border-radius: 25%;
+  padding: 10px;
+  background-color: #ffda60;
+  cursor: pointer;
+}
+
+.mobile-control .key:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.mobile-control .ldr {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+}
+
+@media screen and (max-width: 600px) {
+  .mobile-control {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 /*# sourceMappingURL=style.css.map */
