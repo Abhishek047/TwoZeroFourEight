@@ -10,9 +10,20 @@ const box = document.querySelector('.box');
 const message = document.querySelector('.instr');
 const control = document.querySelector(".i");
 box.addEventListener('click' , mouseClick);
-document.addEventListener('keydown' , keyPress );
+window.addEventListener('keydown' , keyPress );
 control.addEventListener('click' , controlDesc);
 let controlDescOpen = false;
+
+
+function stopScroll()
+{
+    let top = window.pageYOffset || document.documentElement.scrollTop;
+    let left = window.pageXOffset || document.documentElement.scrollLeft;
+    window.onscroll = function (){
+        window.scrollTo(top,0);
+    }
+    // console.log(top,left);
+}
 
 
 //Genrate random element function
@@ -108,9 +119,15 @@ let startPlay = function(){
 //Capturing Events
 
 function keyPress(e){
-    if(loggedIn === 1)
+
+    //if condition to prevent defult action of ARROW KEY 
+    if([37, 38, 39, 40].indexOf(e.keyCode) > -1 ){
+        e.preventDefault();
+        stopScroll();
+    }
+    if(loggedIn === 1)             //game is played and the user has pressed in the box
     {
-      console.log(e.code);
+    //   console.log(e.code);
       if(e.code === 'ArrowDown')
       {
           shiftDown();
@@ -143,6 +160,7 @@ function keyPress(e){
 }
 
 function mouseClick(e){
+    stopScroll();
     message.style.visibility="hidden";
     startPlay();
 }
@@ -150,14 +168,17 @@ function mouseClick(e){
 
 function controlDesc()
 {
+
     if(controlDescOpen === false)
     {
+        window.onscroll = function() {};
         controlDescOpen = true ;
         console.log(1);
         control.parentElement.style.clipPath = "circle( 130% at 7% 15%)";
         control.innerHTML = "Back"
     }
     else{
+        stopScroll();
         controlDescOpen = false ;
         console.log(0);
         control.parentElement.style.clipPath = "circle( 7% at 6.5% 14%)";
