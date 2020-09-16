@@ -4,6 +4,7 @@ let start = 0;  //start helps in reseting the game
 let count=0; //counts the no. of elements in the matrix
 let arr;     //Our Default Matrix Which holds all the Value
 let total=0; //Total Score of The player
+let windowMobile = 0;
 let controlDescOpen = false;
 
 const domRows = document.querySelectorAll(".row");
@@ -23,40 +24,25 @@ mobLeft.addEventListener('click' , listen);
 mobDown.addEventListener('click' , listen);
 mobRight.addEventListener('click' , listen);
 
-function listen(e)
-{
-    if(loggedIn === 1)             //game is played and the user has pressed in the box
+
+
+//Media Query using javaScript
+
+
+const media = matchMedia('(max-width : 600px )');
+media.addEventListener("change" , ({media, matches}) => {
+    const mobileControl = document.querySelector(".mobile-control");
+    if(media, matches)
     {
-      if(e.target.classList.contains('down'))
-      {
-          shiftDown();
-          check();
-          genrate();
-          update();
-      } 
-      else if(e.target.classList.contains('up'))
-      {
-          shiftUp();
-          check();
-          genrate();
-          update();
-      } 
-      else if(e.target.classList.contains('right'))
-      {
-          shiftRight();
-          check();
-          genrate();
-          update();
-      } 
-      else if(e.target.classList.contains('left'))
-      {
-          shiftLeft();
-          check();
-          genrate();
-          update();
-      } 
+        mobileControl.style.display = "flex";
+        windowMobile = 1;
+
     }
-}
+    else{
+        mobileControl.style.display = "none";
+        windowMobile = 0;
+    }
+});
 
 
 box.addEventListener('click' , mouseClick);
@@ -66,11 +52,11 @@ control.addEventListener('click' , controlDesc);
 
 
 //Function to Stop Scroll
+//Can be removed not that inportant but its good for practice
 
 function stopScroll()
 {
     let top = window.pageYOffset || document.documentElement.scrollTop;
-    let left = window.pageXOffset || document.documentElement.scrollLeft;
     window.onscroll = function (){
         window.scrollTo(top,0);
     }
@@ -113,8 +99,6 @@ let genrate = function()
         start=0;
         reset();
         message.style.visibility="visible";
-        // start=0;
-        // startPlay();
     }
 }
 
@@ -178,19 +162,54 @@ let startPlay = function(){
     }
 }
 
+
 //Capturing Events
 
-//function mobileKey press
+//function catches mobile Key press
 
 
+function listen(e)
+{
+    if(loggedIn === 1)             //game is played and the user has pressed in the box
+    {
+      if(e.target.classList.contains('down'))
+      {
+          shiftDown();
+          check();
+          genrate();
+          update();
+      } 
+      else if(e.target.classList.contains('up'))
+      {
+          shiftUp();
+          check();
+          genrate();
+          update();
+      } 
+      else if(e.target.classList.contains('right'))
+      {
+          shiftRight();
+          check();
+          genrate();
+          update();
+      } 
+      else if(e.target.classList.contains('left'))
+      {
+          shiftLeft();
+          check();
+          genrate();
+          update();
+      } 
+    }
+}
 
+//Catches keyPress Events
 
 function keyPress(e){
 
     //if condition to prevent defult action of ARROW KEY 
     if([37, 38, 39, 40].indexOf(e.keyCode) > -1 ){
         e.preventDefault();
-        stopScroll();
     }
     if(loggedIn === 1)             //game is played and the user has pressed in the box
     {
@@ -227,9 +246,12 @@ function keyPress(e){
 }
 
 function mouseClick(e){
-    stopScroll();
     message.style.visibility="hidden";
     startPlay();
+    if(windowMobile !==1)
+    {
+        stopScroll;
+    }
 }
 
 
