@@ -18,6 +18,7 @@ const mobUp = document.querySelector(".up");
 const mobLeft = document.querySelector(".left");
 const mobRight = document.querySelector(".right");
 const mobDown = document.querySelector(".down");
+const mobileControl = document.querySelector(".mobile-control");
 
 mobUp.addEventListener('click' , listen);
 mobLeft.addEventListener('click' , listen);
@@ -30,8 +31,13 @@ mobRight.addEventListener('click' , listen);
 
 
 const media = matchMedia('(max-width : 600px )');
+if(media.matches)
+{
+    mobileControl.style.display = "flex";
+    windowMobile = 1;
+
+}
 media.addEventListener("change" , ({media, matches}) => {
-    const mobileControl = document.querySelector(".mobile-control");
     if(media, matches)
     {
         mobileControl.style.display = "flex";
